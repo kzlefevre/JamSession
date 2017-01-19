@@ -14,10 +14,18 @@
     <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" />
 
-	<link href="css/animate.css" rel="stylesheet" />
+    <!--   Google Fonts   -->
+    <link href="https://fonts.googleapis.com/css?family=Molle:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+
+    <!--  favicon  -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABzc3MAAAAAAIODgwB8fHwAdXV1AG5ubgB+fn4Ad3d3AHl5eQBycnIAe3t7AH19fQB2dnYAeHh4AHFxcQB6enoAERERERERERERERSKERERERERy3fXERERERF2d3xxEREREXlBEHcRERERFzER9xERERERcBF7cREREREXd5dxEREREREXcnEREREREREQlxERERERERH3EREREXdxEfcRERER23ERRxERERF6ERfXEREREReN5lERERERERERERH//wAA+P8AAPA/AADwHwAA8Y8AAPnPAAD8xwAA/gcAAP+HAAD/4wAA//MAAPxzAAD8cwAA/OMAAP4HAAD//wAA" rel="icon" type="image/x-icon" />
+
+
+	   <link href="css/animate.css" rel="stylesheet" />
     <!-- Squad theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-	<link href="css/default.css" rel="stylesheet">
+     <link href="css/style.css" rel="stylesheet">
+	   <link href="css/default.css" rel="stylesheet">
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 	<!-- Preloader -->
@@ -32,7 +40,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="index.html">
-                    <h1>JamSession</h1>
+                    <h1 class="crazyfont">JamSession</h1>
                 </a>
             </div>
 
@@ -54,8 +62,8 @@
     <section id="intro" class="intro" style="background:url('images/jamsessionfrontpage.jpg') no-repeat top center;">
 
 		<div class="slogan">
-			<h2><span class="text_color">JAMSESSION</span> </h2>
-			<h4>FIND OTHERS TO JAM WITH YOU NEARBY</h4>
+			<h2><span class="text_color crazyfont">JAMSESSION</span> </h2>
+			<h4>JAM WITH OTHERS NEARBY</h4>
 		</div>
 		<div class="page-scroll">
 			<a href="#service" class="btn btn-circle">
@@ -66,14 +74,14 @@
 	<!-- /Section: intro -->
 
 	<!-- Section: about -->
-    <section id="about" class="home-section text-center">
+    <section id="map" class="home-section text-center">
 		<div class="heading-about">
 			<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>About us</h2>
+					<h2>Map Jammers Near You</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 
 					</div>
@@ -89,7 +97,7 @@
 				<hr class="marginbot-50">
 			</div>
 		</div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xs-6 col-sm-3 col-md-3">
 				<div class="wow bounceInUp" data-wow-delay="0.2s">
                 <div class="team boxed-grey">
@@ -137,14 +145,14 @@
                 </div>
 				</div>
             </div>
-        </div>
+        </div> -->
 		</div>
 	</section>
 	<!-- /Section: about -->
 
 
 	<!-- Section: services -->
-    <section id="service" class="home-section text-center bg-gray">
+    <section id="profile" class="home-section text-center bg-gray">
 
 		<div class="heading-about">
 			<div class="container">
@@ -152,7 +160,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Our Services</h2>
+					<h2>Your Profile</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 
 					</div>
@@ -167,7 +175,7 @@
 				<hr class="marginbot-50">
 			</div>
 		</div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-3 col-md-3">
 				<div class="wow fadeInLeft" data-wow-delay="0.2s">
                 <div class="service-box">
@@ -220,7 +228,7 @@
                 </div>
 				</div>
             </div>
-        </div>
+        </div> -->
 		</div>
 	</section>
 	<!-- /Section: services -->
@@ -236,7 +244,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Get in touch</h2>
+					<h2>Connect with Jammers</h2>
 					<i class="fa fa-2x fa-angle-down"></i>
 
 					</div>
@@ -276,9 +284,9 @@
                                 Subject</label>
                             <select id="subject" name="subject" class="form-control" required="required">
                                 <option value="na" selected="">Choose One:</option>
-                                <option value="service">General Customer Service</option>
-                                <option value="suggestions">Suggestions</option>
-                                <option value="product">Product Support</option>
+                                <option value="service">Meet up for a JamSession?</option>
+                                <option value="suggestions">Host a JamSession?</option>
+                                <option value="product">Want to just play Rock Band?</option>
                             </select>
                         </div>
                     </div>
@@ -301,20 +309,19 @@
 
 		<div class="col-lg-4">
 			<div class="widget-contact">
-				<h5>Main Office</h5>
+				<h5>{{Person whom you'll contact}}</h5>
 
 				<address>
-				  <strong>Squas Design, Inc.</strong><br>
-				  Tower 795 Folsom Ave, Beautiful Suite 600<br>
-				  San Francisco, CA 94107<br>
-				  <abbr title="Phone">P:</abbr> (123) 456-7890
+				  <strong>{{Name}}</strong><br>
+				  text me bro!<br>
+				  <abbr title="Phone">P:</abbr> (555) 456-7890
 				</address>
 
 				<address>
 				  <strong>Email</strong><br>
-				  <a href="mailto:#">email.name@example.com</a>
+				  <a href="mailto:#">personname@gmail.com</a>
 				</address>
-				<address>
+				<!-- <address>
 				  <strong>We're on social networks</strong><br>
                        	<ul class="company-social">
                             <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -322,7 +329,7 @@
                             <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
                             <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                         </ul>
-				</address>
+				</address> -->
 
 			</div>
 		</div>
@@ -343,7 +350,7 @@
 						</a>
 					</div>
 					</div>
-					<p>&copy;Copyright 2014 - Squad. All rights reserved.</p>
+					<p>&copy;Copyright 2017 - JamSession.</p>
 				</div>
 			</div>
 		</div>
