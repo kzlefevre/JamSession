@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JamSession</title>
+    <title>Play JamSession</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
@@ -21,8 +21,8 @@
     <!--  favicon  -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABzc3MAAAAAAIODgwB8fHwAdXV1AG5ubgB+fn4Ad3d3AHl5eQBycnIAe3t7AH19fQB2dnYAeHh4AHFxcQB6enoAERERERERERERERSKERERERERy3fXERERERF2d3xxEREREXlBEHcRERERFzER9xERERERcBF7cREREREXd5dxEREREREXcnEREREREREQlxERERERERH3EREREXdxEfcRERER23ERRxERERF6ERfXEREREReN5lERERERERERERH//wAA+P8AAPA/AADwHwAA8Y8AAPnPAAD8xwAA/gcAAP+HAAD/4wAA//MAAPxzAAD8cwAA/OMAAP4HAAD//wAA" rel="icon" type="image/x-icon" />
 
-    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
 
@@ -56,10 +56,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#intro">Home</a></li>
-        <li><a href="#profile">Profile</a></li>
+
 		<li><a href="#map">Map</a></li>
-		<li><a href="#contact">Contact</a></li>
+          <li><a href="#profile">Profile</a></li>
+		<li><a href="#connect">Connect</a></li>
       </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -107,7 +107,15 @@
 			</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container" >
+               <div id='mapbox' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoia3psZWZldnJlIiwiYSI6ImNpeTF2dWd3MjAwMDMyd21udnE5bmZnMWEifQ.oY5cihk-6ZUF56AsmWVkPw';
+var map = new mapboxgl.Map({
+    container: 'mapbox',
+    style: 'mapbox://styles/mapbox/streets-v9'
+});
+</script>
 
 		<div class="row">
 			<div class="col-lg-2 col-lg-offset-5">
@@ -253,8 +261,8 @@
 
 
 
-	<!-- Section: contact -->
-    <section id="contact" class="home-section text-center">
+	<!-- Section: connect -->
+    <section id="connect" class="home-section text-center">
 		<div class="heading-contact">
 			<div class="container">
 			<div class="row">
@@ -356,10 +364,10 @@
 	</section>
 	<!-- /Section: contact -->
 
-	<footer>
+	<!-- <footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 col-lg-12">
+				<div class="col-sm-12 col-md-12">
 					<div class="wow shake" data-wow-delay="0.4s">
 					<div class="page-scroll marginbot-30">
 						<a href="#intro" id="totop" class="btn btn-circle">
@@ -371,7 +379,7 @@
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 
     <!-- Core JavaScript Files -->
     <script src="js/jquery.min.js"></script>
@@ -380,6 +388,7 @@
 	<script src="js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.js"></script>
+    <script src="main.js"></script>
 
 </body>
 

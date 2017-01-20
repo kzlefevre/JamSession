@@ -45,3 +45,18 @@ markers.on('ready', function(e) {
   }
 }).addTo(mapToggle);
 mapToggle.scrollWheelZoom.disable();
+
+L.mapbox.accessToken = 'pk.eyJ1Ijoia3psZWZldnJlIiwiYSI6ImNpeTF2dWd3MjAwMDMyd21udnE5bmZnMWEifQ.oY5cihk-6ZUF56AsmWVkPw';
+var mapCluster = L.mapbox.map('map-cluster')
+  .setView([38.9, -77], 11)
+  .addLayer(L.mapbox.tileLayer('mapbox.light'));
+L.mapbox.featureLayer()
+  .loadURL('/help/data/examples/stations.geojson')
+  .on('ready', function(e) {
+    var clusterGroup = new L.MarkerClusterGroup();
+    e.target.eachLayer(function(layer) {
+      clusterGroup.addLayer(layer);
+    });
+    mapCluster.addLayer(clusterGroup);
+  });
+mapCluster.scrollWheelZoom.disable();
