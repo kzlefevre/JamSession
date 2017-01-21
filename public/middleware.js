@@ -1,4 +1,4 @@
-var User = require('./models/users')
+var User = require('./models/user')
 
 module.exports = {
   isLoggedIn : (req, res, next) =>{

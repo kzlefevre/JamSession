@@ -712,7 +712,7 @@ Parallax
 
 /* Media queries */
 
-@media(min-width:767px) {
+@media(min-width:350px) {
 
     .navbar {
         padding: 20px 0;

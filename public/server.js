@@ -5,6 +5,7 @@ var express = require('express'),
     routes = require('./routes'),
     PORT = process.env.PORT || 8080,
     app = express(),
+    passport = require('passport'),
     sessions = require('client-sessions')({
       cookieName : "",
       secret : "",
@@ -15,6 +16,13 @@ var express = require('express'),
     });
 
 // Connect to DB
+require('./config/passport'); // include our own passport config
+
+var sessionMiddleware = sessions({
+    secret : "jamsession",
+    resave : false, // resave the cookie even if it doesn't change
+    saveUninitialized : true // save an empty session / cookie for EVERY user that comes to the site
+});
 mongoose.connect("mongodb://", (err)=>{
   if(err){
     return console.log("DB failed to connect");
@@ -27,6 +35,9 @@ app.use(
   express.static('public'),
   bodyParser.json(),
   bodyParser.urlencoded({extended : true}),
+  sessionMiddleware,
+  passport.initialize(), // This gives it access to our app
+  passport.session(), // gives passport access to our sessions
   morgan,
   sessions
 );
