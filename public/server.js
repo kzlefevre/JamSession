@@ -6,20 +6,20 @@ var express = require('express'),
     PORT = process.env.PORT || 8080,
     app = express(),
     sessions = require('client-sessions')({
-      cookieName : "_zooAuth",
-      secret : "keyboardcat3",
-      requestKey : "session",
+      cookieName : "",
+      secret : "",
+      requestKey : "",
       cookie : {
         httpOnly : true
       }
     });
 
 // Connect to DB
-mongoose.connect("mongodb://localhost/zoo", (err)=>{
+mongoose.connect("mongodb://", (err)=>{
   if(err){
-    return console.log("DB failed to connect".trap);
+    return console.log("DB failed to connect");
   }
-  console.log("☃☃ DB Connected ☃☃".cyan);
+  console.log("DB Connected");
 });
 
 // Middleware

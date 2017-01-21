@@ -21,10 +21,9 @@
     <!--  favicon  -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABzc3MAAAAAAIODgwB8fHwAdXV1AG5ubgB+fn4Ad3d3AHl5eQBycnIAe3t7AH19fQB2dnYAeHh4AHFxcQB6enoAERERERERERERERSKERERERERy3fXERERERF2d3xxEREREXlBEHcRERERFzER9xERERERcBF7cREREREXd5dxEREREREXcnEREREREREQlxERERERERH3EREREXdxEfcRERER23ERRxERERF6ERfXEREREReN5lERERERERERERH//wAA+P8AAPA/AADwHwAA8Y8AAPnPAAD8xwAA/gcAAP+HAAD/4wAA//MAAPxzAAD8cwAA/OMAAP4HAAD//wAA" rel="icon" type="image/x-icon" />
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="js/map.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script> -->
 
 
 <link href="css/animate.css" rel="stylesheet" />
@@ -84,99 +83,43 @@
 			</a>
 		</div> -->
     </section>
-	<!-- /Section: intro -->
 
-	<!-- Section: MAPBOX -->
 
-     <!-- <nav id='filters' class='filter-ui'></nav>
-     <div id='map-toggle' class='map'></div> -->
+	<!-- Section: googlemaps -->
 
-    <section id="map" class="home-section text-center">
+
+<section id="map" class="home-section text-center">
 		<div class="heading-about">
 			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow bounceInDown" data-wow-delay="0.4s">
-					<div class="section-heading">
-					<h2>Map Jammers Near You</h2>
-					<i class="fa fa-2x fa-angle-down"></i>
+			     <div class="row">
+				     <div class="col-lg-8 col-lg-offset-2">
+					     <div class="wow bounceInDown" data-wow-delay="0.4s">
+					          <div class="section-heading">
+					              <h2>Map Jammers Near You</h2>
+					              <i class="fa fa-2x fa-angle-down"></i>
+                                        <div id="googlemap">
 
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="container" >
-               <div id='mapbox' style='width: 400px; height: 300px;'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoia3psZWZldnJlIiwiYSI6ImNpeTF2dWd3MjAwMDMyd21udnE5bmZnMWEifQ.oY5cihk-6ZUF56AsmWVkPw';
-var map = new mapboxgl.Map({
-    container: 'mapbox',
-    style: 'mapbox://styles/mapbox/streets-v9'
-});
-</script>
-
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
+                                             <iframe
+                                             width="800px"
+                                             height="450px"
+                                             frameborder="0" style="border:0"
+                                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCq2n0iLaKqpqG-moVTEokYtAQedrOJf4o&q=DeVry+Bootcamp,Westminster+CO&zoom=14" allowfullscreen>
+                                        </iframe>
+                                        </div>
+                                        </div>
+					          </div>
+					     </div>
+				     </div>
+			     </div>
 			</div>
 		</div>
-        <!-- <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="0.2s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Anna Hanaceck</h5>
-                        <p class="subtitle">Pixel Crafter</p>
-                        <div class="avatar"><img src="images/team/1.jpg" alt="" class="img-responsive img-circle" /></div>
-                    </div>
-                </div>
-				</div>
-            </div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="0.5s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Maura Daniels</h5>
-                        <p class="subtitle">Ruby on Rails</p>
-                        <div class="avatar"><img src="images/team/2.jpg" alt="" class="img-responsive img-circle" /></div>
-
-                    </div>
-                </div>
-				</div>
-            </div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="0.8s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Jack Briane</h5>
-                        <p class="subtitle">jQuery Ninja</p>
-                        <div class="avatar"><img src="images/team/3.jpg" alt="" class="img-responsive img-circle" /></div>
-
-                    </div>
-                </div>
-				</div>
-            </div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="1s">
-                <div class="team boxed-grey">
-                    <div class="inner">
-						<h5>Tom Petterson</h5>
-                        <p class="subtitle">Typographer</p>
-                        <div class="avatar"><img src="images/team/4.jpg" alt="" class="img-responsive img-circle" /></div>
-
-                    </div>
-                </div>
-				</div>
-            </div>
-        </div> -->
-		</div>
-	</section>
-	<!-- /Section: about -->
 
 
-	<!-- Section: services -->
+</section>
+
+
+
+	<!-- Section: Profile -->
     <section id="profile" class="home-section text-center bg-gray">
 
 		<div class="heading-about">
@@ -256,7 +199,6 @@ var map = new mapboxgl.Map({
         </div> -->
 		</div>
 	</section>
-	<!-- /Section: services -->
 
 
 
@@ -385,10 +327,11 @@ var map = new mapboxgl.Map({
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
 	<script src="js/jquery.scrollTo.js"></script>
-	<script src="js/wow.min.js"></script>
+     <script src="js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.js"></script>
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
+
 
 </body>
 

@@ -40,3 +40,8 @@ footer {
     font-family: 'Molle', cursive;
     font-size: 1.5em;
 }
+
+#googmap {
+    width: 100%;
+    height: 100%;
+}
