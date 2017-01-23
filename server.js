@@ -6,14 +6,15 @@ var express = require('express'),
     PORT = process.env.PORT || 8080,
     app = express(),
     passport = require('passport'),
-    sessions = require('client-sessions')({
-      cookieName : "",
-      secret : "",
-      requestKey : "",
-      cookie : {
-        httpOnly : true
-      }
-    });
+    sessions = require('express-session');
+    // sessions = require('client-sessions')({
+    //   cookieName : "",
+    //   secret : "",
+    //   requestKey : "",
+    //   cookie : {
+    //     httpOnly : true
+    //   }
+    // });
 
 // Connect to DB
 require('./config/passport'); // include our own passport config
@@ -23,7 +24,7 @@ var sessionMiddleware = sessions({
     resave : false, // resave the cookie even if it doesn't change
     saveUninitialized : true // save an empty session / cookie for EVERY user that comes to the site
 });
-mongoose.connect("mongodb://", (err)=>{
+mongoose.connect("mongodb://127.0.0.1:27017", (err)=>{
   if(err){
     return console.log("DB failed to connect");
   }
@@ -39,7 +40,7 @@ app.use(
   passport.initialize(), // This gives it access to our app
   passport.session(), // gives passport access to our sessions
   morgan,
-  sessions
+  sessionMiddleware
 );
 
 // Routes
@@ -50,5 +51,5 @@ app.listen(PORT, (err)=>{
   if(err){
     return console.log(`Our Server stopped `);
   }
-  console.log(`Server running on ${PORT});
+  console.log(`Server running on ${PORT}`);
 });

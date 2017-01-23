@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="en">
+<html ng-app="JamSession" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +16,6 @@
     <!-- Bootstrap core CSS -->
   <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-  <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
@@ -36,13 +34,18 @@
     <!--  favicon  -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABzc3MAAAAAAIODgwB8fHwAdXV1AG5ubgB+fn4Ad3d3AHl5eQBycnIAe3t7AH19fQB2dnYAeHh4AHFxcQB6enoAERERERERERERERSKERERERERy3fXERERERF2d3xxEREREXlBEHcRERERFzER9xERERERcBF7cREREREXd5dxEREREREXcnEREREREREQlxERERERERH3EREREXdxEfcRERER23ERRxERERF6ERfXEREREReN5lERERERERERERH//wAA+P8AAPA/AADwHwAA8Y8AAPnPAAD8xwAA/gcAAP+HAAD/4wAA//MAAPxzAAD8cwAA/OMAAP4HAAD//wAA" rel="icon" type="image/x-icon" />
 
+
+<!-- ~~~~~~~~~~~ may or may not need this js file... -->
     <script src="js/map.js"></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script> -->
+<!-- ~~~~~~~~~~~~~ ANGULAR ~~~~~~~~~~~~`` -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
 
 
-<link href="css/animate.css" rel="stylesheet" />
+
     <!-- theme CSS -->
+     <link href="css/animate.css" rel="stylesheet">
      <link href="css/style.css" rel="stylesheet">
 	<link href="css/default.css" rel="stylesheet">
 
@@ -50,7 +53,7 @@
 
 
 <!-- BODY -->
-<body ng-controller="" id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body ng-controller="jamTime" id="page-top" data-spy="scroll" data-target=".navbar-custom">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
@@ -116,7 +119,7 @@
 
           <div class="row">
                <div class="col-md-3"></div>
-           <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCq2n0iLaKqpqG-moVTEokYtAQedrOJf4o&q=DeVry+Bootcamp,Westminster+CO&zoom=14" width=90% height="350" frameborder="0" style="border:0"></iframe>
+           <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCq2n0iLaKqpqG-moVTEokYtAQedrOJf4o&q=DeVry+Bootcamp,Westminster+CO&zoom=14" width=80% height="350" frameborder="0" style="border:0"></iframe>
           </div>
 </section>
 
@@ -139,56 +142,227 @@
 					<i class="fa fa-2x fa-angle-down"></i>
 
 					</div>
+
+<!-- ~~~~~~~~~~~~~Sign in/up, hide when logged in~~~~~~~~~~~~~~~~~~~~~ -->
+
+                 <div ng-hide="uCtrl.showsignup" class="form-signin" role="form">
+                        <div id="status"></div>
+                    <h2 class="form-signin-heading">Log In or Sign Up with Google</h2>
+
+<!-- ~~~~~~~~~~~~~GOOGLE SIGN IN BUTTON~~~~~~~~~~~~~~~~~~~~~ -->
+               <a href="/auth/google" class="block-center">
+                         <img src="images/goo1.png" height="50px"> </a>
 					</div>
 				</div>
 			</div>
 			</div>
 		</div>
-		<div class="container">
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-		</div>
-
-          <!-- ~~~~~~~~~~~~~Sign in/up, hide when logged in~~~~~~~~~~~~~~~~~~~~~ -->
-
-  <form ng-hide="" class="form-signin" role="form">
-         <div id="status"></div>
-     <h2 class="form-signin-heading">Log In or Sign Up with Google</h2>
-
-     <!-- <label for="inputFname" class="sr-only">First Name</label>
-         <input type="text" id="inputFullname" class="form-control" placeholder="First Name" required autofocus> -->
-
-     <label for="inputEmail" class="sr-only">Email address</label>
-     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required >
-
-     <label for="inputPassword" class="sr-only">Password</label>
-     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-
-<!-- ~~~~~~~~~~~~~GOOGLE SIGN IN BUTTON~~~~~~~~~~~~~~~~~~~~~ -->
-
-         <div  class="col-md-6 block-center text-center">
-         <a href="/auth/google" class="g-signin2" data-theme="dark">
-         </a>
-         </div>
-
-
-     <!-- <div class= "col-lg-12 text-center block-center">
-          <a href="/auth/google" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
-          </a>
-
-          </div> -->
-
-
-
-</section>
 
 
 
 
-	<!-- Section: connect -->
+
+
+<!-- ~~~~~~~~~~~~~Profile, hide when logged out~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~SIGN UP FIRST~~~~~~~~~~~~~~~~~~~~ -->
+
+
+<form ng-show="uCtrl.showsignup" class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend class="text-center">Tell us more about yourself</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fn">First name</label>
+  <div class="col-md-4">
+  <input id="fn" name="fn" type="text" placeholder="first name" class="form-control input-md" required="" ng-model="jCtrl.newUser.fn">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ln">Last name</label>
+  <div class="col-md-4">
+  <input id="ln" name="ln" type="text" placeholder="last name" class="form-control input-md" required="" ng-model="jCtrl.newUser.ln">
+
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Email</label>
+  <div class="col-md-4">
+  <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="" ng-model="jCtrl.newUser.email">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="instrument">Instrument</label>
+  <div class="col-md-4">
+  <input id="instrument" name="instrument" type="text" placeholder="" class="form-control input-md" required="" ng-model="jCtrl.newUser.instrument">
+
+  </div>
+</div>
+
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="zipcode">Zip Code</label>
+  <div class="col-md-4">
+  <input id="zipcode" pattern="[0-9]{0,5}" name="zipcode" type="text" placeholder="Zip Code" class="form-control input-md" required="" ng-model="jCtrl.newUser.zipcode">
+
+  </div>
+</div>
+
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="host">Do you have a place to host a JamSession?</label>
+  <div class="col-md-4">
+    <label class="radio-inline" for="host-0">
+      <input type="radio" name="host" id="host-0" value="true" checked="checked" ng-model="jCtrl.newUser.host">
+      Yes
+    </label>
+    <label class="radio-inline" for="host-1">
+      <input type="radio" name="host" id="host-1" value="false" ng-model="jCtrl.newUser.host">
+      No
+    </label>
+  </div>
+</div>
+
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="othersplay">Do you have extra instrument for others to play?</label>
+  <div class="col-md-4">
+    <label class="radio-inline" for="othersplay-0">
+      <input type="radio" name="othersplay" id="othersplay-0" value="true" checked="checked" ng-model="jCtrl.newUser.othersplay">
+      Yes
+    </label>
+    <label class="radio-inline" for="othersplay-1">
+      <input type="radio" name="othersplay" id="othersplay-1" value="false" ng-model="jCtrl.newUser.othersplay">
+      No
+    </label>
+  </div>
+</div>
+
+    <!-- Select Basic  -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="genre1">Genre 1</label>
+  <div class="col-md-4">
+    <select id="genre1" name="genre1" class="form-control input-md" ng-model="userCtrl.newUser.genre1">
+        <option></option>
+        <option>Alternative</option>
+        <option>Blues</option>
+        <option>Bluegrass</option>
+        <option>Celtic</option>
+        <option>Classical</option>
+        <option>Country</option>
+        <option>Electronic</option>
+        <option>Hip Hop/Rap</option>
+        <option>Indie</option>
+        <option>Jazz</option>
+        <option>Latin</option>
+        <option>Metal</option>
+        <option>Pop</option>
+        <option>RB/Soul</option>
+        <option>Reggae</option>
+        <option>Rock</option>
+        <option>Soundtrack/Game</option>
+        <option>World</option>
+        <option>Other</option>
+    </select>
+  </div>
+</div>
+    <!-- Select Basic  -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="genre2">Genre 2</label>
+  <div class="col-md-4">
+    <select id="genre2" name="genre2" class="form-control input-md" ng-model="userCtrl.newUser.genre2">
+        <option></option>
+        <option>Alternative</option>
+        <option>Blues</option>
+        <option>Bluegrass</option>
+        <option>Celtic</option>
+        <option>Classical</option>
+        <option>Country</option>
+        <option>Electronic</option>
+        <option>Hip Hop/Rap</option>
+        <option>Indie</option>
+        <option>Jazz</option>
+        <option>Latin</option>
+        <option>Metal</option>
+        <option>Pop</option>
+        <option>RB/Soul</option>
+        <option>Reggae</option>
+        <option>Rock</option>
+        <option>Soundtrack/Game</option>
+        <option>World</option>
+        <option>Other</option>
+    </select>
+  </div>
+</div>
+    <!-- Select Basic  -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="genre3">Genre 3</label>
+  <div class="col-md-4">
+    <select id="genre3" name="genre3" class="form-control input-md" ng-model="userCtrl.newUser.genre3">
+        <option></option>
+        <option>Alternative</option>
+        <option>Blues</option>
+        <option>Bluegrass</option>
+        <option>Celtic</option>
+        <option>Classical</option>
+        <option>Country</option>
+        <option>Electronic</option>
+        <option>Hip Hop/Rap</option>
+        <option>Indie</option>
+        <option>Jazz</option>
+        <option>Latin</option>
+        <option>Metal</option>
+        <option>Pop</option>
+        <option>RB/Soul</option>
+        <option>Reggae</option>
+        <option>Rock</option>
+        <option>Soundtrack/Game</option>
+        <option>World</option>
+        <option>Other</option>
+    </select>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button ng-click="userCtrl.saveUser()" name="submit" class="btn btn-primary center-block">SUBMIT to CONTINUE</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~PROFILE SECTION AFTER, n -->
+
+
+
+
+
+
+
+
+
+
+
+	<!-- ~~~~~~~~~~~~~~~~~~Section: connect ~~~~~~~~~~~~~~~~```-->
     <section id="connect" class="home-section text-center">
 		<div class="heading-contact">
 			<div class="container">
@@ -261,17 +435,17 @@
 
 		<div class="col-lg-4">
 			<div class="widget-contact">
-				<h5>{{Person whom you'll contact}}</h5>
+				<h5>{{userCtrl.user.name}}</h5>
 
 				<address>
-				  <strong>{{Name}}</strong><br>
+				  <strong>{{userCtrl.user.name}}</strong><br>
 				  text me bro!<br>
 				  <abbr title="Phone">P:</abbr> (555) 456-7890
 				</address>
 
 				<address>
 				  <strong>Email</strong><br>
-				  <a href="mailto:#">personname@gmail.com</a>
+				  <a href="mailto:#">{{userCtrl.user.email}}</a>
 				</address>
 
 
@@ -283,22 +457,6 @@
 	</section>
 	<!-- /Section: contact -->
 
-	<!-- <footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="wow shake" data-wow-delay="0.4s">
-					<div class="page-scroll marginbot-30">
-						<a href="#intro" id="totop" class="btn btn-circle">
-							<i class="fa fa-angle-double-up animated"></i>
-						</a>
-					</div>
-					</div>
-					<p>&copy;Copyright 2017 - JamSession.</p>
-				</div>
-			</div>
-		</div>
-	</footer> -->
 
     <!-- Core JavaScript Files -->
     <script src="js/jquery.min.js"></script>
