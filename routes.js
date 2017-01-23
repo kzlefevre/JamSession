@@ -1,4 +1,4 @@
-// var Users = require('./controllers/users');
+var Users = require('./controllers/controller.users.js');
 var User = require('./models/user');
 var Middleware = require('./middleware');
 var passport = require('passport');
@@ -32,7 +32,7 @@ module.exports = (app) => {
   //   res.redirect('/')
   // });
   //
-  app.get('/api/users', User.get);
+  app.get('/api/users', Users.get);
   // app.post('/api/users', Users.create);
   // app.post('/api/users/login', Users.login);
 
