@@ -1,6 +1,7 @@
 var passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth20').Strategy,
     User = require('../models/user');
+    config = require('../config.js')
 
 passport.serializeUser((user, next)=>{
     next(null, user.id)
@@ -17,9 +18,9 @@ passport.deserializeUser((id, next)=>{
 passport.use(
     // How we are defining a successful login
     new GoogleStrategy({
-        clientID : "591418991077-27sg25mkk3kpcud9sfa7amlcl37ridkg.apps.googleusercontent.com",
-        clientSecret : "aPuvins9c99mfSw1AgIyc4mO",
-        callbackURL : "/auth/google/callback"
+        clientID : config.clientID,
+        clientSecret : config.clientSecret,
+        callbackURL : config.callbackURL
     }, (accessToken, refreshToken, profile, next)=>{
       console.log(profile);
       console.log(accessToken);
