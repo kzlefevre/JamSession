@@ -29,7 +29,7 @@
 
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq2n0iLaKqpqG-moVTEokYtAQedrOJf4o"></script>
 
     <!--  favicon  -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABzc3MAAAAAAIODgwB8fHwAdXV1AG5ubgB+fn4Ad3d3AHl5eQBycnIAe3t7AH19fQB2dnYAeHh4AHFxcQB6enoAERERERERERERERSKERERERERy3fXERERERF2d3xxEREREXlBEHcRERERFzER9xERERERcBF7cREREREXd5dxEREREREXcnEREREREREQlxERERERERH3EREREXdxEfcRERER23ERRxERERF6ERfXEREREReN5lERERERERERERH//wAA+P8AAPA/AADwHwAA8Y8AAPnPAAD8xwAA/gcAAP+HAAD/4wAA//MAAPxzAAD8cwAA/OMAAP4HAAD//wAA" rel="icon" type="image/x-icon" />
@@ -53,7 +53,7 @@
 
 
 <!-- BODY -->
-<body ng-controller="jamTime" id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body ng-controller="jamTime as uCtrl" id="page-top" data-spy="scroll" data-target=".navbar-custom">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
@@ -108,31 +108,22 @@
 
 					     <div class="wow bounceInDown" data-wow-delay="0.4s">
 					          <div class="section-heading">
-					              <h2>Map Jammers Near You</h2>
+					              <h2>Find Jammers Near You</h2>
 					              <i class="fa fa-2x fa-angle-down"></i>
-
-
-                                        </div>
-                                        </div>
-					          </div>
-					     </div>
-
-          <div class="row">
-               <div class="col-md-3"></div>
-           <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCq2n0iLaKqpqG-moVTEokYtAQedrOJf4o&q=DeVry+Bootcamp,Westminster+CO&zoom=14" width=80% height="350" frameborder="0" style="border:0"></iframe>
-          </div>
+                                   </div>
+                                   <div id="googlemap"></div>
+                              </div>
+			</div>
+		</div>
 </section>
 
-
-
-   </div>
 
 
 
 	<!-- Section: Profile -->
     <section id="profile" class="home-section text-center bg-gray">
 
-		<div class="heading-about">
+		<div  class="heading-about">
 			<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
@@ -145,18 +136,19 @@
 
 <!-- ~~~~~~~~~~~~~Sign in/up, hide when logged in~~~~~~~~~~~~~~~~~~~~~ -->
 
-                 <div ng-hide="uCtrl.showsignup" class="form-signin" role="form">
+                 <div ng-hide="uCtrl.isSignedIn"   class="form-signin" role="form">
                         <div id="status"></div>
                     <h2 class="form-signin-heading">Log In or Sign Up with Google</h2>
 
 <!-- ~~~~~~~~~~~~~GOOGLE SIGN IN BUTTON~~~~~~~~~~~~~~~~~~~~~ -->
-               <a href="/auth/google" class="block-center">
+                         <a href="/auth/google" class="block-center">
                          <img src="images/goo1.png" height="50px"> </a>
 					</div>
-				</div>
-			</div>
-			</div>
-		</div>
+
+
+
+
+
 
 
 
@@ -168,7 +160,7 @@
 <!-- ~~~~~~~~~~~~SIGN UP FIRST~~~~~~~~~~~~~~~~~~~~ -->
 
 
-<form ng-show="uCtrl.showsignup" class="form-horizontal">
+<form ng-show="uCtrl.isSignedIn" class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -350,6 +342,13 @@
 </fieldset>
 </form>
 
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</section>
  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~PROFILE SECTION AFTER, n -->
 
 
@@ -363,7 +362,7 @@
 
 
 	<!-- ~~~~~~~~~~~~~~~~~~Section: connect ~~~~~~~~~~~~~~~~```-->
-    <section id="connect" class="home-section text-center">
+    <section ng-show="uCtrl.isSignedIn" id="connect" class="home-section text-center">
 		<div class="heading-contact">
 			<div class="container">
 			<div class="row">
@@ -374,11 +373,7 @@
 					<i class="fa fa-2x fa-angle-down"></i>
 
 					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
+
 		<div class="container">
 
 		<div class="row">
@@ -386,6 +381,20 @@
 				<hr class="marginbot-50">
 			</div>
 		</div>
+
+          <div class="col-lg-4">
+               <div class="widget-contact">
+                    <h5>{{uCtrl.user.name}}</h5>
+
+                    <address>
+                      <strong>Email</strong><br>
+                      <a href="mailto:{{uCtrl.user.email}}">{{uCtrl.user.email}}</a>
+                    </address>
+
+
+               </div>
+          </div>
+
     <div class="row">
         <div class="col-lg-8">
             <div class="boxed-grey">
@@ -433,27 +442,18 @@
             </div>
         </div>
 
-		<div class="col-lg-4">
-			<div class="widget-contact">
-				<h5>{{userCtrl.user.name}}</h5>
 
-				<address>
-				  <strong>{{userCtrl.user.name}}</strong><br>
-				  text me bro!<br>
-				  <abbr title="Phone">P:</abbr> (555) 456-7890
-				</address>
-
-				<address>
-				  <strong>Email</strong><br>
-				  <a href="mailto:#">{{userCtrl.user.email}}</a>
-				</address>
-
-
-			</div>
-		</div>
     </div>
 
 		</div>
+
+
+     </div>
+</div>
+</div>
+</div>
+</div>
+
 	</section>
 	<!-- /Section: contact -->
 

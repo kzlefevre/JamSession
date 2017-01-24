@@ -7,7 +7,8 @@ function initialize() {
     // Starter map options
     var mapOptions = {
         zoom: 12,
-        center: new google.maps.LatLng(40.01499, -105.27055)
+        center: new google.maps.LatLng(40.01499, -105.27055),
+        scrollwheel: false,
     };
 
     // Create the map using the maps api
@@ -30,6 +31,25 @@ function initialize() {
         });
     });
 }
+
+
+// {
+//   "type": "Feature",
+//   "properties": {
+//     "firstname": "Kevin",
+//     "instrument": "guitar",
+//     "email": "kevin.lefevre@gmail.com",
+//     "genre": "bluegrass"
+//   },
+//   "geometry": {
+//     "coordinates": [
+//       -105.08523,
+//       40.54228
+//     ],
+//     "type": "Point"
+//   }
+// }
+
 
 // On window load, initialize the map
 // google.maps.event.addDomListener(window, 'load', initialize);

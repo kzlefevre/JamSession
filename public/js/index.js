@@ -61,17 +61,26 @@ function userCtrl ($http) {
     .then(function(response){
         if(response.data){
              uCtrl.user = response.data;
-             uCtrl.showsignup = true;
+             uCtrl.isSignedIn = true;
         }
 
      });
 
-   $http.get('/api/user')
+   $http.get('/api/users')
    .then(function(response){
         uCtrl.userList = response.data;
+
        });
 
+       var mapOptions = {
+           zoom: 14,
+           center: new google.maps.LatLng(39.919603, -105.009085),
+           scrollwheel: false,
 
+       };
+
+
+       uCtrl.map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
 
 
 
@@ -79,7 +88,9 @@ function userCtrl ($http) {
 
 };
 
-
+// 1870 W 122nd Ave
+// Westminster, CO 80234
+// 39.919603, -105.009085
 
 // function userCtrl (userFactory) {
 //   var jCtrl = this;

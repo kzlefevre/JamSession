@@ -199,3 +199,11 @@ footer {
     display: block;
     margin-top: 10px;
 }
+#googlemap
+{
+	width: 100%;
+	height: 500px;
+	frameborder: 0;
+	border: 0;
+	padding: 5px;
+}
