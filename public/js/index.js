@@ -56,6 +56,15 @@ angular.module('JamSession', [])
 function userCtrl ($http) {
 
      var uCtrl = this;
+     var mapOptions = {
+         zoom: 12,
+         center: new google.maps.LatLng(39.919603, -105.009085),
+         scrollwheel: false,
+
+     };
+
+
+     uCtrl.map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
 
    $http.get('/api/me')
     .then(function(response){
@@ -69,24 +78,50 @@ function userCtrl ($http) {
    $http.get('/api/users')
    .then(function(response){
         uCtrl.userList = response.data;
+        uCtrl.userList.forEach(function(user){
+             console.log(user);
+            var marker = new google.maps.Marker({
+                map : uCtrl.map,
+                position : {
+                    lat : user.coords[1],
+                    lng : user.coords[0]
+                }
+            })
+            console.log(marker.addListener);
+            var infoWindowContent = '<h1>' + user.name + '</h1> <p>' + user.genre + '</p> <p>' + user.instrument + '</p>'
+            var infoWindow = new google.maps.InfoWindow({
+                content : infoWindowContent
+            })
 
-       });
-
-       var mapOptions = {
-           zoom: 14,
-           center: new google.maps.LatLng(39.919603, -105.009085),
-           scrollwheel: false,
-
-       };
+            marker.addListener('click', function(){
+                infoWindow.open(uCtrl.map, marker)
+            })
+        })
 
 
-       uCtrl.map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
+     });
+
+uCtrl.saveUser = function(){
+     $http.post('/api/users/' + uCtrl.user._id, uCtrl.user)
+     .then(function(respose){
+          uCtrl.isOnProfilePage = true;
+     });
+}
+
+
 
 
 
 
 
 };
+//
+// function signOut() {
+//     var auth2 = gapi.auth2.getAuthInstance();
+//     auth2.signOut().then(function () {
+//       console.log('User signed out.');
+//     });
+//   }
 
 // 1870 W 122nd Ave
 // Westminster, CO 80234

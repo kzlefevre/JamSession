@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 
     <!-- Bootstrap core CSS -->
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -77,6 +77,7 @@
 		<li><a href="#map">Map</a></li>
           <li><a href="#profile">Profile</a></li>
 		<li><a href="#connect">Connect</a></li>
+          <li ng-show="uCtrl.isSignedIn"><a href="/logout">Sign out</a><li>
       </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -160,7 +161,7 @@
 <!-- ~~~~~~~~~~~~SIGN UP FIRST~~~~~~~~~~~~~~~~~~~~ -->
 
 
-<form ng-show="uCtrl.isSignedIn" class="form-horizontal">
+<form ng-show="uCtrl.isSignedIn" ng-hide="isOnProfilePage" class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -168,90 +169,66 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="fn">First name</label>
+  <label class="col-md-4 control-label" for="fn">Name</label>
   <div class="col-md-4">
-  <input id="fn" name="fn" type="text" placeholder="first name" class="form-control input-md" required="" ng-model="jCtrl.newUser.fn">
+  <input id="fn" name="name" type="text" placeholder="name" class="form-control input-md" required="" ng-model="uCtrl.user.name">
 
   </div>
 </div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="ln">Last name</label>
-  <div class="col-md-4">
-  <input id="ln" name="ln" type="text" placeholder="last name" class="form-control input-md" required="" ng-model="jCtrl.newUser.ln">
-
-  </div>
-</div>
-
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Email</label>
   <div class="col-md-4">
-  <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="" ng-model="jCtrl.newUser.email">
+  <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="" ng-model="uCtrl.user.email">
 
   </div>
 </div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ln">City, State</label>
+  <div class="col-md-4">
+  <input id="ln" name="ln" type="text" placeholder="city, st" class="form-control input-md" required="" ng-model="uCtrl.user.location">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="zipcode">Birthday</label>
+  <div class="col-md-4">
+  <input id="zipcode"  name="birthday" type="text" placeholder="birthday" class="form-control input-md" required="" ng-model="uCtrl.user.birthday">
+
+  </div>
+</div>
+
 
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="instrument">Instrument</label>
   <div class="col-md-4">
-  <input id="instrument" name="instrument" type="text" placeholder="" class="form-control input-md" required="" ng-model="jCtrl.newUser.instrument">
+  <input id="instrument" name="instrument" type="text" placeholder="instrument you play the best" class="form-control input-md" required="" ng-model="uCtrl.user.instrument">
 
   </div>
 </div>
 
 
-
-<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="zipcode">Zip Code</label>
+  <label class="col-md-4 control-label"
+  for="instrument">Favorite Band</label>
   <div class="col-md-4">
-  <input id="zipcode" pattern="[0-9]{0,5}" name="zipcode" type="text" placeholder="Zip Code" class="form-control input-md" required="" ng-model="jCtrl.newUser.zipcode">
+  <input id="favoriteBand" name="favoriteBand" type="text" placeholder="what's your favorite band?" class="form-control input-md" required="" ng-model="uCtrl.user.favoriteBand">
 
-  </div>
-</div>
-
-
-<!-- Multiple Radios (inline) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="host">Do you have a place to host a JamSession?</label>
-  <div class="col-md-4">
-    <label class="radio-inline" for="host-0">
-      <input type="radio" name="host" id="host-0" value="true" checked="checked" ng-model="jCtrl.newUser.host">
-      Yes
-    </label>
-    <label class="radio-inline" for="host-1">
-      <input type="radio" name="host" id="host-1" value="false" ng-model="jCtrl.newUser.host">
-      No
-    </label>
-  </div>
-</div>
-
-
-<!-- Multiple Radios (inline) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="othersplay">Do you have extra instrument for others to play?</label>
-  <div class="col-md-4">
-    <label class="radio-inline" for="othersplay-0">
-      <input type="radio" name="othersplay" id="othersplay-0" value="true" checked="checked" ng-model="jCtrl.newUser.othersplay">
-      Yes
-    </label>
-    <label class="radio-inline" for="othersplay-1">
-      <input type="radio" name="othersplay" id="othersplay-1" value="false" ng-model="jCtrl.newUser.othersplay">
-      No
-    </label>
   </div>
 </div>
 
     <!-- Select Basic  -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="genre1">Genre 1</label>
+  <label class="col-md-4 control-label" for="genre1">Genre</label>
   <div class="col-md-4">
-    <select id="genre1" name="genre1" class="form-control input-md" ng-model="userCtrl.newUser.genre1">
-        <option></option>
+    <select id="genre1" name="genre1" class="form-control input-md" ng-model="uCtrl.user.genre">
+        <option>Genre of music you like most?</option>
         <option>Alternative</option>
         <option>Blues</option>
         <option>Bluegrass</option>
@@ -274,79 +251,68 @@
     </select>
   </div>
 </div>
-    <!-- Select Basic  -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="genre2">Genre 2</label>
-  <div class="col-md-4">
-    <select id="genre2" name="genre2" class="form-control input-md" ng-model="userCtrl.newUser.genre2">
-        <option></option>
-        <option>Alternative</option>
-        <option>Blues</option>
-        <option>Bluegrass</option>
-        <option>Celtic</option>
-        <option>Classical</option>
-        <option>Country</option>
-        <option>Electronic</option>
-        <option>Hip Hop/Rap</option>
-        <option>Indie</option>
-        <option>Jazz</option>
-        <option>Latin</option>
-        <option>Metal</option>
-        <option>Pop</option>
-        <option>RB/Soul</option>
-        <option>Reggae</option>
-        <option>Rock</option>
-        <option>Soundtrack/Game</option>
-        <option>World</option>
-        <option>Other</option>
-    </select>
-  </div>
-</div>
-    <!-- Select Basic  -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="genre3">Genre 3</label>
-  <div class="col-md-4">
-    <select id="genre3" name="genre3" class="form-control input-md" ng-model="userCtrl.newUser.genre3">
-        <option></option>
-        <option>Alternative</option>
-        <option>Blues</option>
-        <option>Bluegrass</option>
-        <option>Celtic</option>
-        <option>Classical</option>
-        <option>Country</option>
-        <option>Electronic</option>
-        <option>Hip Hop/Rap</option>
-        <option>Indie</option>
-        <option>Jazz</option>
-        <option>Latin</option>
-        <option>Metal</option>
-        <option>Pop</option>
-        <option>RB/Soul</option>
-        <option>Reggae</option>
-        <option>Rock</option>
-        <option>Soundtrack/Game</option>
-        <option>World</option>
-        <option>Other</option>
-    </select>
-  </div>
-</div>
+
+
 
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
-    <button ng-click="userCtrl.saveUser()" name="submit" class="btn btn-primary center-block">SUBMIT to CONTINUE</button>
+    <a
+     <button ng-click="uCtrl.saveUser()" name="submit" class="btn btn-primary center-block">SAVE to CONTINUE</button>
+     </a>
   </div>
 </div>
 
 </fieldset>
 </form>
 
+<div class="container-fluid well span6" ng-show="uCtrl.isOnProfilePage">
+	<div class="row-fluid">
+        <div class="span2" >
+		    <img  class="img-circle">
+			<br>
+			<br>
+        </div>
+
+       <div class="span8">
+
+		<h3 class="media-heading">{{thing.fn}} {{thing.ln}}  :
+			<medium>{{thing.zipcode}}</medium></h3>
+            <span><strong>Skills: </strong></span>
+                        <span class="label label-success">{{thing.instrument}}</span>
+<!--                    <span class="label label-info">Bass</span>
+                        <span class="label label-info">Drums</span>
+                        <span class="label label-warning">Vocals</span> -->
+            <h3>{{thing.email}}</h3>
+            <h4>Can I host a JamSession? :  {{thing.host}}</h4>
+            <h4>Do I have instruments for others to play? :  {{thing.othersplay}}</h4>
+            <h4>{{thing.genre1}}</h4>
+		    <h4>{{thing.genre2}}</h4>
+            <h4>{{thing.genre3}}</h4>
+
+
+        <div class="span2">
+            <div class="btn-group">
+                <a class="btn btn-info" href="">Jam Together
+                </a>
+
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
+
+<!-- STAY ABOVE HERE FOR BOUNCE -->
 </div>
 </div>
 </div>
 </div>
 </div>
+
+
+
 
 </section>
  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~PROFILE SECTION AFTER, n -->
@@ -456,6 +422,8 @@
 
 	</section>
 	<!-- /Section: contact -->
+
+
 
 
     <!-- Core JavaScript Files -->

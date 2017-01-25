@@ -29,10 +29,15 @@ passport.use(
       // find or create user in DB
       User.findOne({gid : profile.id}, (err, user)=>{
           if(!user){
+               console.log(profile.id);
               var newuser = new User({
                   name : profile.displayName,
                   email : profile.emails[0].value,
-                  gid : profile.id
+                  placesLived : profile._json.placesLived,
+                  birthday : profile._json.birthday,
+                  image : profile._json.image.url,
+                  gid : profile.id,
+
               })
               newuser.save((err, doc)=>{
                   next(null, doc)

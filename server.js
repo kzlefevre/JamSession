@@ -3,7 +3,7 @@ var express = require('express'),
     morgan = require('morgan')('dev'),
     mongoose = require('mongoose'),
     routes = require('./routes'),
-    PORT = process.env.PORT || 8080,
+    PORT = process.env.PORT || 80,
     app = express(),
     passport = require('passport'),
     sessions = require('express-session');
@@ -24,7 +24,7 @@ var sessionMiddleware = sessions({
     resave : false, // resave the cookie even if it doesn't change
     saveUninitialized : true // save an empty session / cookie for EVERY user that comes to the site
 });
-mongoose.connect("mongodb://127.0.0.1:27017", (err)=>{
+mongoose.connect("mongodb://localhost/JamSession", (err)=>{
   if(err){
     return console.log("DB failed to connect");
   }
@@ -45,6 +45,8 @@ app.use(
 
 // Routes
 routes(app);
+
+
 
 // Listen
 app.listen(PORT, (err)=>{
