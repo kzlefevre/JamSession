@@ -33,7 +33,6 @@ passport.use(
               var newuser = new User({
                   name : profile.displayName,
                   email : profile.emails[0].value,
-                  placesLived : profile._json.placesLived,
                   birthday : profile._json.birthday,
                   image : profile._json.image.url,
                   gid : profile.id,

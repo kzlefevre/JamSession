@@ -57,8 +57,8 @@ function userCtrl ($http) {
 
      var uCtrl = this;
      var mapOptions = {
-         zoom: 12,
-         center: new google.maps.LatLng(39.919603, -105.009085),
+         zoom: 18,
+         center: new google.maps.LatLng(39.919218, -105.008815),
          scrollwheel: false,
 
      };
@@ -83,12 +83,15 @@ function userCtrl ($http) {
             var marker = new google.maps.Marker({
                 map : uCtrl.map,
                 position : {
-                    lat : user.coords[1],
-                    lng : user.coords[0]
+                    lat : user.coords[0],
+                    lng : user.coords[1]
                 }
             })
             console.log(marker.addListener);
-            var infoWindowContent = '<h1>' + user.name + '</h1> <p>' + user.genre + '</p> <p>' + user.instrument + '</p>'
+            var infoWindowContent =
+'<h1>' + user.name + '</h1> <p>' +
+user.genre + '</p> <p>' +
+user.instrument + '</p> <p>' + user.favoriteBand + '</p> <a ng-show="uCtrl.isSignedIn" class="btn btn-info" href="mailto:{{uCtrl.user.email}}">' + "Let's Jam!" + '</a>'
             var infoWindow = new google.maps.InfoWindow({
                 content : infoWindowContent
             })
@@ -96,6 +99,8 @@ function userCtrl ($http) {
             marker.addListener('click', function(){
                 infoWindow.open(uCtrl.map, marker)
             })
+            
+
         })
 
 

@@ -6,24 +6,36 @@ mongoose.connect('mongodb://localhost/JamSession')
 
 var seedUsers = [
     {
-        name : 'Billy Bobbo',
-        coords : [-105, 40],
-        email : 'billy@bob.gmail.com'
+        name : 'Keith Moon',
+        coords : [40.022728, -105.287957],
+        email : 'keithmooningwho@gmail.com',
+        favoriteBand : 'The Who',
+        genre : 'Rock',
+        instrument : 'Drums',
     },
     {
-        name : 'Alice Anteater',
-        coords : [-104.998928, 40.00283710],
-        email : 'alice@anteater.gmail.com'
+        name : 'Nicole Fiorentino',
+        coords : [40.003303, -105.279248],
+        email : 'nikkismashingpumpkins@gmail.com',
+        favoriteBand : 'The Smashing Pumpkins',
+        genre : 'Alternative',
+        instrument : 'Bass',
     },
     {
-        name : 'George Glass',
-        coords : [-104.598928, 39.00283710],
-        email : 'george@glass.gmail.com'
+        name : 'Stevie Nicks',
+        coords : [40.003812, -105.255055],
+        email : 'fleetwoodstevienicks@gmail.com',
+        favoriteBand : 'Fleetwood Mac',
+        genre : 'Pop Rock',
+        instrument : 'Vocals',
     },
     {
-        name : 'Jill Jillson',
-        coords : [-104.3528, 40.10283710],
-        email : 'jill@jillson.gmail.com'
+        name : 'Bob Marley',
+        coords : [40.016707, -105.219978],
+        email : 'bobbybejamminmarley@gmail.com',
+        favoriteBand : 'Bob Marley',
+        genre : 'Reggae',
+        instrument : 'Guitar',
     }
 ]
 

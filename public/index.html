@@ -76,7 +76,7 @@
 
 		<li><a href="#map">Map</a></li>
           <li><a href="#profile">Profile</a></li>
-		<li><a href="#connect">Connect</a></li>
+		<!-- <li><a href="#connect">Connect</a></li> -->
           <li ng-show="uCtrl.isSignedIn"><a href="/logout">Sign out</a><li>
       </ul>
             </div>
@@ -160,8 +160,8 @@
 
 <!-- ~~~~~~~~~~~~SIGN UP FIRST~~~~~~~~~~~~~~~~~~~~ -->
 
-
-<form ng-show="uCtrl.isSignedIn" ng-hide="isOnProfilePage" class="form-horizontal">
+<!-- <div ng-hide="uCtrl.isOnProfilePage"> -->
+<form ng-show="uCtrl.isSignedIn"  class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -185,14 +185,6 @@
   </div>
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="ln">City, State</label>
-  <div class="col-md-4">
-  <input id="ln" name="ln" type="text" placeholder="city, st" class="form-control input-md" required="" ng-model="uCtrl.user.location">
-
-  </div>
-</div>
 
 <!-- Text input-->
 <div class="form-group">
@@ -252,8 +244,6 @@
   </div>
 </div>
 
-
-
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
@@ -267,38 +257,33 @@
 </fieldset>
 </form>
 
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~PROFILE SECTION AFTER ~~~~~~~~~~~~~~-->
+
 <div class="container-fluid well span6" ng-show="uCtrl.isOnProfilePage">
 	<div class="row-fluid">
         <div class="span2" >
-		    <img  class="img-circle">
+		    <img href={{uCtrl.user.image}} class="img-circle">
 			<br>
 			<br>
         </div>
 
        <div class="span8">
 
-		<h3 class="media-heading">{{thing.fn}} {{thing.ln}}  :
-			<medium>{{thing.zipcode}}</medium></h3>
-            <span><strong>Skills: </strong></span>
-                        <span class="label label-success">{{thing.instrument}}</span>
-<!--                    <span class="label label-info">Bass</span>
-                        <span class="label label-info">Drums</span>
-                        <span class="label label-warning">Vocals</span> -->
-            <h3>{{thing.email}}</h3>
-            <h4>Can I host a JamSession? :  {{thing.host}}</h4>
-            <h4>Do I have instruments for others to play? :  {{thing.othersplay}}</h4>
-            <h4>{{thing.genre1}}</h4>
-		    <h4>{{thing.genre2}}</h4>
-            <h4>{{thing.genre3}}</h4>
+		<h1 class="media-heading">{{uCtrl.user.name}}</h1>
+			<h3>{{uCtrl.user.birthday}}</h3>
+                   <h4>{{uCtrl.user.genre}}</h4>
+                   <h4>{{uCtrl.user.favoriteBand}}</h4>
+                   <h4>{{uCtrl.user.instrument}}</h4>
+            <h3>{{uCtrl.user.email}}</h3>
 
 
-        <div class="span2">
+        <!-- <div class="span2">
             <div class="btn-group">
                 <a class="btn btn-info" href="">Jam Together
                 </a>
 
             </div>
-        </div>
+        </div> -->
 </div>
 </div>
 </div>
@@ -310,24 +295,16 @@
 </div>
 </div>
 </div>
+<!-- </div> -->
 
 
 
 
 </section>
- <!-- ~~~~~~~~~~~~~~~~~~~~~~~~PROFILE SECTION AFTER, n -->
 
 
 
-
-
-
-
-
-
-
-
-	<!-- ~~~~~~~~~~~~~~~~~~Section: connect ~~~~~~~~~~~~~~~~```-->
+	<!-- ~~~~~~~~~~~~~~~~~~Section: connect ~~~~~~~~~~~~~~~~-->
     <section ng-show="uCtrl.isSignedIn" id="connect" class="home-section text-center">
 		<div class="heading-contact">
 			<div class="container">
@@ -335,12 +312,12 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="wow bounceInDown" data-wow-delay="0.4s">
 					<div class="section-heading">
-					<h2>Connect with Jammers</h2>
-					<i class="fa fa-2x fa-angle-down"></i>
+					<h2>Connect & Email Jammers <br>Using the Map</h2>
+					<i class="fa fa-2x fa-angle-up"></i>
 
 					</div>
 
-		<div class="container">
+		<!-- <div class="container">
 
 		<div class="row">
 			<div class="col-lg-2 col-lg-offset-5">
@@ -354,14 +331,15 @@
 
                     <address>
                       <strong>Email</strong><br>
-                      <a href="mailto:{{uCtrl.user.email}}">{{uCtrl.user.email}}</a>
+                      <a href="mailto:{{uCtrl.user.email}}">{{uCtrl.user.email}}
+                 </a>
                     </address>
 
 
                </div>
-          </div>
+          </div> -->
 
-    <div class="row">
+<!--    <div class="row">
         <div class="col-lg-8">
             <div class="boxed-grey">
                 <form id="contact-form">
@@ -409,9 +387,9 @@
         </div>
 
 
-    </div>
+    </div> -->
 
-		</div>
+		<!-- </div> -->
 
 
      </div>
