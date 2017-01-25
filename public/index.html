@@ -161,7 +161,7 @@
 <!-- ~~~~~~~~~~~~SIGN UP FIRST~~~~~~~~~~~~~~~~~~~~ -->
 
 <!-- <div ng-hide="uCtrl.isOnProfilePage"> -->
-<form ng-show="uCtrl.isSignedIn"  class="form-horizontal">
+<form ng-show="uCtrl.isSignedIn && !uCtrl.updatedProfile"  class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -260,9 +260,10 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~PROFILE SECTION AFTER ~~~~~~~~~~~~~~-->
 
 <div class="container-fluid well span6" ng-show="uCtrl.isOnProfilePage">
+     <button ng-click="uCtrl.updatedProfile = false">Edit my Profile</button>
 	<div class="row-fluid">
         <div class="span2" >
-		    <img href={{uCtrl.user.image}} class="img-circle">
+		    <img src="{{uCtrl.user.image}}" class="img-circle">
 			<br>
 			<br>
         </div>

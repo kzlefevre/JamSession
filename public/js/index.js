@@ -53,7 +53,7 @@ angular.module('JamSession', [])
 
 
 
-function userCtrl ($http) {
+function userCtrl ($http, $scope) {
 
      var uCtrl = this;
      var mapOptions = {
@@ -87,11 +87,15 @@ function userCtrl ($http) {
                     lng : user.coords[1]
                 }
             })
-            console.log(marker.addListener);
+            console.log(uCtrl.isSignedIn);
             var infoWindowContent =
 '<h1>' + user.name + '</h1> <p>' +
 user.genre + '</p> <p>' +
-user.instrument + '</p> <p>' + user.favoriteBand + '</p> <a ng-show="uCtrl.isSignedIn" class="btn btn-info" href="mailto:{{uCtrl.user.email}}">' + "Let's Jam!" + '</a>'
+user.instrument + '</p> <p>' + user.favoriteBand + '</p>';
+
+     if(uCtrl.isSignedIn){
+          infoWindowContent += '<a class="btn btn-info" href="mailto:'+ user.email +'">' + "Let's Jam!" + '</a>'
+     }
             var infoWindow = new google.maps.InfoWindow({
                 content : infoWindowContent
             })
@@ -99,9 +103,10 @@ user.instrument + '</p> <p>' + user.favoriteBand + '</p> <a ng-show="uCtrl.isSig
             marker.addListener('click', function(){
                 infoWindow.open(uCtrl.map, marker)
             })
-            
+
 
         })
+
 
 
      });
@@ -110,6 +115,7 @@ uCtrl.saveUser = function(){
      $http.post('/api/users/' + uCtrl.user._id, uCtrl.user)
      .then(function(respose){
           uCtrl.isOnProfilePage = true;
+          uCtrl.updatedProfile = true;
      });
 }
 
